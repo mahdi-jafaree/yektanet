@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react/cjs/react.development'
 
 export const Datatable = ({ values, header, loading }) => {
 
     const stars = JSON.parse(localStorage.getItem('stars'))
     const [valuesData, setValuesData] = useState(values)
+
+    useEffect(() => {
+        setValuesData(values)
+    }, [values])
+
     const [asc, setAsc] = useState(true)
     const onStar = rowData => {
         if (!stars)
@@ -16,12 +21,12 @@ export const Datatable = ({ values, header, loading }) => {
     }
 
     const sortByFieldAscending = (field) => {
-        const _tmp = valuesData.slice();
+        const _tmp = valuesData;
         _tmp.sort((a, b) => (a[field] + "").toLowerCase() > (b[field] + "").toLowerCase() ? 1 : -1)
         setValuesData(_tmp)
     }
     const sortByFieldDescending = (field) => {
-        const _tmp = valuesData.slice();
+        const _tmp = valuesData;
         _tmp.sort((a, b) => (a[field] + "").toLowerCase() > (b[field] + "").toLowerCase() ? -1 : 1)
         setValuesData(_tmp)
     }
@@ -29,12 +34,11 @@ export const Datatable = ({ values, header, loading }) => {
         if (asc) {
             sortByFieldAscending(field);
             setAsc(!asc)
-        }else{
+        } else {
             sortByFieldDescending(field)
             setAsc(!asc)
         }
     }
-
     return (
         <>
             {header &&
@@ -44,12 +48,24 @@ export const Datatable = ({ values, header, loading }) => {
             <table className="w-full mt-2 datatable" >
                 <thead className="bg-alabaster">
                     <tr>
-                        <th onClick={() => onSortByField('name')} className="py-2">نام تغییر دهنده</th>
-                        <th onClick={() => onSortByField('date')} className="py-2">تاریخ</th>
-                        <th onClick={() => onSortByField('title')} className="py-2">نام آگهی</th>
-                        <th onClick={() => onSortByField('field')} className="py-2">فیلد</th>
-                        <th onClick={() => onSortByField('old_value')} className="py-2">مقدار قدیمی</th>
-                        <th onClick={() => onSortByField('new_value')} className="py-2">مقدار جدید</th>
+                        <th
+                            onClick={() => onSortByField('name')}
+                            className="py-2">نام تغییر دهنده</th>
+                        <th
+                            onClick={() => onSortByField('date')}
+                            className="py-2">تاریخ</th>
+                        <th
+                            onClick={() => onSortByField('title')}
+                            className="py-2">نام آگهی</th>
+                        <th
+                            onClick={() => onSortByField('field')}
+                            className="py-2">فیلد</th>
+                        <th
+                            onClick={() => onSortByField('old_value')}
+                            className="py-2">مقدار قدیمی</th>
+                        <th
+                            onClick={() => onSortByField('new_value')}
+                            className="py-2">مقدار جدید</th>
                         <th className="py-2">ستاره</th>
                     </tr>
                 </thead>
