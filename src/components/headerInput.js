@@ -13,7 +13,7 @@ export const HeaderInput = ({ className, titleClassName, inputClassName, inputPl
                         if (e.code.toLowerCase() === 'enter') {
                             onInputChange(e)
                         }
-                    }} className={`${inputClassName ?? ""} py-1 px-2 `} placeholder={inputPlaceholder ?? ""} ></input>
+                    }} className={`${inputClassName ?? ""} py-1 px-2 input-header `} placeholder={inputPlaceholder ?? ""} ></input>
             </div>
         </div>
     )
