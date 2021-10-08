@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6, p, td, th {
 }
 
 .bg-gray {
-  background-color: #eee;
+  background-color: #efefef;
 }
 
 .bg-alabaster {
@@ -305,4 +305,11 @@ h1, h2, h3, h4, h5, h6, p, td, th {
 
 .filter-input{
   width: 100%;
+}
+
+.datatable tbody tr:nth-child(even) {
+  background-color: white;
+}
+.datatable tbody tr:nth-child(odd) {
+  background-color: #ccc;
 }

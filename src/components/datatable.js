@@ -10,24 +10,27 @@ export const Datatable = ({ values, header, loading }) => {
             <table className="w-full mt-2 datatable" >
                 <thead className="bg-alabaster">
                     <tr>
-                        <th>نام تغییر دهنده</th>
-                        <th>تاریخ</th>
-                        <th>نام آگهی</th>
-                        <th>فیلد</th>
-                        <th>مقدار قدیمی</th>
-                        <th>مقدار جدید</th>
+                        <th className="py-2">نام تغییر دهنده</th>
+                        <th className="py-2">تاریخ</th>
+                        <th className="py-2">نام آگهی</th>
+                        <th className="py-2">فیلد</th>
+                        <th className="py-2">مقدار قدیمی</th>
+                        <th className="py-2">مقدار جدید</th>
                     </tr>
                 </thead>
-                {loading ? <p className="text-center">loading</p> : <tbody>
-                    {values.slice().map(row => <tr key={row.id}>
-                        <td className="p-1" >{row.name}</td>
-                        <td className="p-1" >{row.date}</td>
-                        <td className="p-1" >{row.title}</td>
-                        <td className="p-1" >{row.field}</td>
-                        <td className="p-1" >{row.old_value}</td>
-                        <td className="p-1" >{row.new_value}</td>
-                    </tr>)}
-                </tbody>}
+                <tbody>{loading ? <tr className="text-center"><td colSpan={6} >loading</td></tr> :
+                    <>
+                        {values.slice().map(row => <tr key={row.id}>
+                            <td className="p-1" >{row.name}</td>
+                            <td className="p-1" >{row.date}</td>
+                            <td className="p-1" >{row.title}</td>
+                            <td className="p-1" >{row.field}</td>
+                            <td className="p-1" >{row.old_value}</td>
+                            <td className="p-1" >{row.new_value}</td>
+                        </tr>)}
+                    </>
+                }
+                </tbody>
             </table>
         </>
     )

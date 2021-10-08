@@ -7,7 +7,13 @@ export const HeaderInput = ({ className, titleClassName, inputClassName, inputPl
                 {title}
             </h6>
             <div className="mt-1" >
-                <input onChange={onInputChange} className={`${inputClassName ?? ""} py-1 px-2 `} placeholder={inputPlaceholder ?? ""} ></input>
+                <input
+                    // onBlur={onInputChange}
+                    onKeyDown={e => {
+                        if (e.code.toLowerCase() === 'enter') {
+                            onInputChange(e)
+                        }
+                    }} className={`${inputClassName ?? ""} py-1 px-2 `} placeholder={inputPlaceholder ?? ""} ></input>
             </div>
         </div>
     )
