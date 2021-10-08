@@ -8,7 +8,7 @@ import { cleanParam, filterList, onFieldFilter } from './utils/filter';
 function App() {
   const history = useHistory()
   const location = useLocation()
-  const [listData, setListData] = useState(data.slice())
+  const [listData, setListData] = useState(data.slice(0,1000))
   const { search } = location
   const [loading, setLoading] = useState(false)
 
@@ -18,13 +18,13 @@ function App() {
       setLoading(true)
       setTimeout(() => {
         const cleanedParams = cleanParam(decodeURI(search))
-        const filtered = filterList(data.slice(), cleanedParams)
+        const filtered = filterList(data.slice(0,1000), cleanedParams)
         setListData(filtered)
         setLoading(false)
       }, 1)
 
     } else {
-      setListData(data.slice())
+      setListData(data.slice(0,1000))
     }
 
   }, [search])
