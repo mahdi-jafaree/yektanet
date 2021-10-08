@@ -8,7 +8,7 @@ export const HeaderInput = ({ className, titleClassName, inputClassName, inputPl
             </h6>
             <div className="mt-1" >
                 <input
-                    // onBlur={onInputChange}
+                    onBlur={onInputChange}
                     onKeyDown={e => {
                         if (e.code.toLowerCase() === 'enter') {
                             onInputChange(e)
