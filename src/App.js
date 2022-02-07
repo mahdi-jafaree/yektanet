@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Datatable } from './components/datatable';
 function App() {
 
   return (
